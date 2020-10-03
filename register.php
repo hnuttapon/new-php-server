@@ -24,7 +24,7 @@
 
     $salt = "\$5\$rounds=5000\$" . "steamedhams" . $username . "\$";
     $hash = crypt($password, $salt);
-    $insertuserquery = "INSERT INTO players (username,salt,hash,money_km,latitude,longitude,total_km,current_level,current_task,role,Game_id) VALUES ('" . $username . "' , '" . $salt . "', '" . $hash . "','1000','0','0','0',1,1,'0',200);";
+    $insertuserquery = "INSERT INTO players (username,salt,hash,money_km,latitude,longitude,total_km,current_level,current_task,role) VALUES ('" . $username . "' , '" . $salt . "', '" . $hash . "','1000','0','0','0','1','1','0');";
     mysqli_query($con, $insertuserquery) or die("4: Insert Player query failed"); //error code #4 - Insert query failed
 
     echo("0");

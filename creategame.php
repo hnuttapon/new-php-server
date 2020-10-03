@@ -27,7 +27,7 @@
  
     if(mysqli_num_rows($gamecheck) > 0){
         $insertuserquery = "INSERT INTO game (GameName,player,CG_id) VALUES ('" . $username . "' , '" . $username . "',  $gameid );";
-        mysqli_query($con, $insertuserquery) or die("Insert game query failed ".mysqli_error($con)); 
+        mysqli_query($con, $insertuserquery) or die("Insert game query failed " . mysqli_error($con)); 
     }
 
     echo("0");

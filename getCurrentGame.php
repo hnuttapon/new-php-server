@@ -6,12 +6,15 @@
     }
 
 
-    $sql = "SELECT GameName FROM currentgame";
+    $sql = "SELECT * FROM currentgame";
     $result = $con->query($sql) or die("query failed");
     echo "GameName:";
     echo $result->num_rows . ":";
     while($row = $result->fetch_assoc()) {
         echo $row["GameName"];
+        echo ":";
+        $TotalPlayer =  strval($row["TotalPlayer"]);
+        echo $TotalPlayer;
         echo ":";
     }
 

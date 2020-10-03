@@ -8,15 +8,15 @@
  }
 
     $username = $_POST["username"];
-
-    $insertgamequery = "INSERT INTO 'current-game' (GameName) VALUES ('" . $username . ");";
+    
+    $insertgamequery = "INSERT INTO currentgame (GameName) VALUES ('" . $username . ");";
     mysqli_query($con, $insertgamequery) or die("1: Insert create game query failed"); 
 
-    $gamecheckquery = "SELECT 'idCurrent-Game' FROM current-game WHERE GameName = '" . $username . "';";
+    $gamecheckquery = "SELECT 'idCG' FROM currentgame WHERE GameName = '" . $username . "';";
 
     if ($gamecheckquery->num_rows > 0) {
         while($row = $gamecheckquery->fetch_assoc()) {
-          $gameid = $row["idCurrent-Game"];
+          $gameid = $row["idCG"];
         }
     };
  

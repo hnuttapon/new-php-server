@@ -13,7 +13,8 @@
     mysqli_query($con, $insertgamequery) or die("1: Insert create game query failed"); 
 
     $gamecheckquery = "SELECT idCG FROM currentgame WHERE GameName = '" . $username . "';";
-
+    $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select id query failed"); 
+    
     if ($gamecheckquery->num_rows > 0) {
         while($row = $gamecheckquery->fetch_assoc()) {
           $gameid = $row["idCG"];
@@ -21,7 +22,9 @@
         }
     };
     echo "gameid : " . strval($gameid) ;
-    $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select id query failed"); 
+
+
+ 
     if(mysqli_num_rows($gamecheck) > 0){
         $insertuserquery = "INSERT INTO game (GameName,player,CG_id) VALUES ('" . $username . "' , '" . $username . "', '" . $gameid . "';";
         mysqli_query($con, $insertuserquery) or die("3: Insert Player query failed"); 

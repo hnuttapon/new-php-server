@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`players` (
   `total_km` VARCHAR(45) NULL,
   `current_level` VARCHAR(45) NULL DEFAULT 0,
   `current_task` VARCHAR(45) NULL DEFAULT 0,
-  `role` VARCHAR(45) NULL DEFAULT 0,
+  `role` VARCHAR(45) NOT NULL DEFAULT 0,
   `Game_id` INT NOT NULL DEFAULT 200,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,

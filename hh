@@ -23,6 +23,7 @@ USE `heroku_e2c4947f07c47f2` ;
 CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Current-Game` (
   `idCurrent-Game` INT NOT NULL,
   `GameName` VARCHAR(45) NULL,
+  `TotalPlayer` INT NULL,
   PRIMARY KEY (`idCurrent-Game`))
 ENGINE = InnoDB;
 

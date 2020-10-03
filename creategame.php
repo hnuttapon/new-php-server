@@ -8,7 +8,7 @@
  }
 
     $username = $_POST["username"];
-    echo $username;
+    //echo $username;
     $insertgamequery = "INSERT INTO currentgame (GameName) VALUES ('" . $username . "');";
     mysqli_query($con, $insertgamequery) or die("1: Insert create game query failed"); 
 
@@ -17,9 +17,10 @@
     if ($gamecheckquery->num_rows > 0) {
         while($row = $gamecheckquery->fetch_assoc()) {
           $gameid = $row["idCG"];
+          
         }
     };
- 
+    echo $gameid;
     $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select id query failed"); 
     if(mysqli_num_rows($gamecheck) > 0){
         $insertuserquery = "INSERT INTO game (GameName,player,CG_id) VALUES ('" . $username . "' , '" . $username . "', '" . $gameid . "';";

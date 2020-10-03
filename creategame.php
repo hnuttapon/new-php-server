@@ -12,7 +12,7 @@
     $insertgamequery = "INSERT INTO currentgame (GameName) VALUES ('" . $username . "');";
     mysqli_query($con, $insertgamequery) or die("1: Insert create game query failed"); 
 
-    $gamecheckquery = "SELECT 'idCG' FROM currentgame WHERE GameName = '" . $username . "';";
+    $gamecheckquery = "SELECT idCG FROM currentgame WHERE GameName = '" . $username . "';";
 
     if ($gamecheckquery->num_rows > 0) {
         while($row = $gamecheckquery->fetch_assoc()) {

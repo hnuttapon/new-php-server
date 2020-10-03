@@ -21,12 +21,12 @@
           
         }
     };
-  $gameid = (int)$gameid ;
+    $gameid= (int)$gameid ;
 
 
  
     if(mysqli_num_rows($gamecheck) > 0){
-        $insertuserquery = "INSERT INTO game (GameName,player,CG_id) VALUES ('" . $username . "' , '" . $username . "', 0;";
+        $insertuserquery = "INSERT INTO game (GameName,player,CG_id) VALUES ('" . $username . "' , '" . $username . "',  $gameid );";
         mysqli_query($con, $insertuserquery) or die(mysqli_error($con)); 
     }
 

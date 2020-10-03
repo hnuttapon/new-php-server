@@ -14,9 +14,9 @@
 
     $gamecheckquery = "SELECT idCG FROM currentgame WHERE GameName = '" . $username . "';";
     $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select id query failed"); 
-    
-    if ($gamecheckquery->num_rows > 0) {
-        while($row = $gamecheckquery->fetch_assoc()) {
+
+    if ($gamecheck->num_rows > 0) {
+        while($row = $gamecheck->fetch_assoc()) {
           $gameid = $row["idCG"];
           
         }

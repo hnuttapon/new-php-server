@@ -21,7 +21,7 @@
           
         }
     };
-    echo "gameid : " . strval($gameid) ;
+  $gameid = (int)$gameid ;
 
 
  

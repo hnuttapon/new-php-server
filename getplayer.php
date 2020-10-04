@@ -4,8 +4,9 @@
         echo "1: Connection failed"; //error code #1 = connection failed
         exit();
     }
+
+
     $gamename = $_POST["gamename"];
-    echo $gamename . "aaa";
     $sql = "SELECT player FROM game WHERE GameName = '" . $gamename . "'";
     $result = $con->query($sql) or die("query failed");
     echo "player:";

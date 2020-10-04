@@ -9,7 +9,9 @@
 
     $username = $_POST["username"];
     $gamename = $_POST["gamename"];
-    //echo $username;    
+    echo $username;  
+    
+    echo $gamename;
     
     $gamecheckquery = "SELECT * FROM currentgame WHERE GameName = '" . $gamename . "';";
     $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select totalplayer query failed");

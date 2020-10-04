@@ -18,13 +18,13 @@ CREATE SCHEMA IF NOT EXISTS `heroku_e2c4947f07c47f2` DEFAULT CHARACTER SET utf8 
 USE `heroku_e2c4947f07c47f2` ;
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`Current-Game`
+-- Table `heroku_e2c4947f07c47f2`.`currentgame`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Current-Game` (
-  `idCurrent-Game` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`currentgame` (
+  `idCG` INT NOT NULL,
   `GameName` VARCHAR(45) NULL,
   `TotalPlayer` INT NULL,
-  PRIMARY KEY (`idCurrent-Game`))
+  PRIMARY KEY (`idCG`))
 ENGINE = InnoDB;
 
 
@@ -32,15 +32,15 @@ ENGINE = InnoDB;
 -- Table `heroku_e2c4947f07c47f2`.`Game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Game` (
-  `idGame` INT NOT NULL,
+  `idGame` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `player` VARCHAR(45) NULL,
-  `Current-Game_idCurrent-Game` INT NOT NULL,
+  `CG_id` INT NOT NULL,
   PRIMARY KEY (`idGame`),
-  INDEX `fk_Game_Current-Game1_idx` (`Current-Game_idCurrent-Game` ASC) ,
+  INDEX `fk_Game_Current-Game1_idx` (`CG_id` ASC) ,
   CONSTRAINT `fk_Game_Current-Game1`
-    FOREIGN KEY (`Current-Game_idCurrent-Game`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`Current-Game` (`idCurrent-Game`)
+    FOREIGN KEY (`CG_id`)
+    REFERENCES `heroku_e2c4947f07c47f2`.`currentgame` (`idCG`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`players` (
   `current_level` VARCHAR(45) NULL DEFAULT 0,
   `current_task` VARCHAR(45) NULL DEFAULT 0,
   `role` VARCHAR(45) NOT NULL DEFAULT 0,
-  `Game_id` INT NOT NULL DEFAULT 200,
+  `Game_id` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
   INDEX `fk_players_Game1_idx` (`Game_id` ASC) ,

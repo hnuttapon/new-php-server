@@ -18,35 +18,6 @@ CREATE SCHEMA IF NOT EXISTS `heroku_e2c4947f07c47f2` DEFAULT CHARACTER SET utf8 
 USE `heroku_e2c4947f07c47f2` ;
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`currentgame`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`currentgame` (
-  `idCG` INT NOT NULL AUTO_INCREMENT,
-  `GameName` VARCHAR(45) NULL,
-  `TotalPlayer` INT NULL,
-  PRIMARY KEY (`idCG`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`Game`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Game` (
-  `idGame` INT NOT NULL AUTO_INCREMENT,
-  `GameName` VARCHAR(45) NULL,
-  `player` VARCHAR(45) NULL,
-  `CG_id` INT NOT NULL,
-  PRIMARY KEY (`idGame`),
-  INDEX `fk_Game_Current-Game1_idx` (`CG_id` ASC) ,
-  CONSTRAINT `fk_Game_Current-Game1`
-    FOREIGN KEY (`CG_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`currentgame` (`idCG`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `heroku_e2c4947f07c47f2`.`players`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`players` (
@@ -61,16 +32,10 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`players` (
   `current_level` VARCHAR(45) NULL DEFAULT 0,
   `current_task` VARCHAR(45) NULL DEFAULT 0,
   `role` VARCHAR(45) NOT NULL DEFAULT 0,
-  `Game_id` INT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) ,
-  INDEX `fk_players_Game1_idx` (`Game_id` ASC) ,
-  CONSTRAINT `fk_players_Game1`
-    FOREIGN KEY (`Game_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`Game` (`idGame`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) )
 ENGINE = InnoDB
+
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -89,6 +54,7 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`friend` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
+
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -194,6 +160,36 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`stock` (
   CONSTRAINT `fk_stock_players1`
     FOREIGN KEY (`players_id`)
     REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `heroku_e2c4947f07c47f2`.`currentgame`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`currentgame` (
+  `idCG` INT NOT NULL AUTO_INCREMENT,
+  `GameName` VARCHAR(45) NULL,
+  `TotalPlayer` INT NULL,
+  PRIMARY KEY (`idCG`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `heroku_e2c4947f07c47f2`.`Game`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Game` (
+  `idGame` INT NOT NULL AUTO_INCREMENT,
+  `GameName` VARCHAR(45) NULL,
+  `player` VARCHAR(45) NULL,
+  `CG_id` INT NOT NULL,
+  `role` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`idGame`),
+  INDEX `fk_Game_Current-Game1_idx` (`CG_id` ASC) ,
+  CONSTRAINT `fk_Game_Current-Game1`
+    FOREIGN KEY (`CG_id`)
+    REFERENCES `heroku_e2c4947f07c47f2`.`currentgame` (`idCG`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

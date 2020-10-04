@@ -10,7 +10,7 @@
     $username = $_POST["username"];
     //echo $username;
     $insertgamequery = "INSERT INTO currentgame (GameName,TotalPlayer) VALUES ('" . $username . "',1);";
-    mysqli_query($con, $insertgamequery) or die("1: Insert create game query failed"); 
+    mysqli_query($con, $insertgamequery) or die("1: Insert create game query failed" . mysqli_error($con)); 
 
     $gamecheckquery = "SELECT idCG FROM currentgame WHERE GameName = '" . $username . "';";
     $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select id query failed"); 

@@ -9,9 +9,15 @@
 
     $username = $_POST["username"];
     $gamename = $_POST["gamename"];
-    echo $username;  
+    //echo $username;  
     
-    echo $gamename;
+    //echo $gamename;
+
+    $playercheck = "SELECT player FROM game WHERE player = '" . $username . "';";
+    $check = mysqli_query($con, $playercheck) or die("1 :select player query failed");
+    if ($check->num_rows > 0) {
+        die("already join" . mysql_error($con));
+    };
     
     $gamecheckquery = "SELECT * FROM currentgame WHERE GameName = '" . $gamename . "';";
     $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select totalplayer query failed");

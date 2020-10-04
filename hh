@@ -21,7 +21,7 @@ USE `heroku_e2c4947f07c47f2` ;
 -- Table `heroku_e2c4947f07c47f2`.`currentgame`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`currentgame` (
-  `idCG` INT NOT NULL,
+  `idCG` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `TotalPlayer` INT NULL,
   PRIMARY KEY (`idCG`))

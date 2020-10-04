@@ -15,8 +15,32 @@
         mysqli_query($con, $deletegamequery) or die("delete game query failed " . mysqli_error($con)); 
     }
     else if($username != $gamename){
-        $deletequery = "DELETE FROM game WHERE player = $username;";
-        mysqli_query($con, $deletequery) or die("delete query failed " . mysqli_error($con)); 
+
+        $gamecheckquery = "SELECT * FROM currentgame WHERE GameName = '" . $gamename . "';";
+        $gamecheck = mysqli_query($con, $gamecheckquery) or die("2 :select totalplayer query failed" . mysqli_error($con));
+        
+        if ($gamecheck->num_rows > 0) {
+            while($row = $gamecheck->fetch_assoc()) {
+              $totalplayer = $row["TotalPlayer"];
+            }
+            if($totalplayer == 1){
+                $deletegamequery = "DELETE FROM currentgame WHERE GameName = $gamename;";
+                mysqli_query($con, $deletegamequery) or die("delete game query failed " . mysqli_error($con)); 
+            }
+            else{
+                $deletequery = "DELETE FROM game WHERE player = $username;";
+                mysqli_query($con, $deletequery) or die("delete query failed " . mysqli_error($con)); 
+
+                $totalplayer = $totalplayer - 1;
+                $sql = "UPDATE currentgame SET TotalPlayer = $totalplayer WHERE GameName = '" . $gamename ."'";
+                $result = $con->query($sql) or die("update total player failed" . mysqli_error($con));
+            }
+        };
+
+        
+
+
+
     }
     
 

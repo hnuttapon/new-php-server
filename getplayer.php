@@ -5,6 +5,7 @@
         exit();
     }
     $gamename = $_POST["gamename"];
+    echo $gamename;
     $sql = "SELECT player FROM game WHERE GameName = '" . $gamename . "'";
     $result = $con->query($sql) or die("query failed");
     echo "player:";

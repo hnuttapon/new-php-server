@@ -12,6 +12,11 @@
 
     if($username == $gamename){
         $deletegamequery = "DELETE FROM currentgame WHERE GameName = $gamename;";
+        mysqli_query($con, $deletegamequery) or die("delete game query failed " . mysqli_error($con)); 
+    }
+    else if($username != $gamename){
+        $deletequery = "DELETE FROM game WHERE player = $username;";
+        mysqli_query($con, $deletequery) or die("delete query failed " . mysqli_error($con)); 
     }
     
 

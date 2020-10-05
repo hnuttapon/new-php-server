@@ -18,7 +18,7 @@
     // echo $namecheck;
 
     $sql = "SELECT * FROM players WHERE username = '" . $username . "';";
-    $result = $con->query($sql) or die("1: " . mysql_error($con));
+    $result = $con->query($sql) or die("query fail");
 
     $salt;
     $hash;
@@ -39,6 +39,8 @@
           $current_task = $row["current_task"];
         //   strval($current_level);
         //   strval($current_task);
+
+          $arr2 = str_split($loginhash, 45);
         }
     };
 
@@ -53,7 +55,7 @@
     }
     if($hash == $arr2[0]){
         $sql = "SELECT * FROM dressing WHERE players_id = '" . $user_id ."'";
-        $result = $con->query($sql) or die("2: " . mysql_error($con));
+        $result = $con->query($sql) or die("query fail");
         //echo $result;
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {

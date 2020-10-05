@@ -1,5 +1,5 @@
 <?php
-        $con = mysqli_connect('eu-cdbr-west-03.cleardb.net', 'bf00e4ec332952', '96cb1300', 'heroku_e2c4947f07c47f2');
+        $con = mysqli_connect('remotemysql.com', 'N2UXTZAF5N', 'QHzkYyyhkV', 'N2UXTZAF5N');
         if(mysqli_connect_errno()){
             echo "1: Connection failed"; //error code #1 = connection failed
             exit();

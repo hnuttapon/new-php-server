@@ -18,7 +18,7 @@
     // echo $namecheck;
 
     $sql = "SELECT * FROM players WHERE username = '" . $username . "';";
-    $result = $con->query($sql) or die("query fail");
+    $result = $con->query($sql) or die("1: query fail" . mysql_error($con));
 
     $salt;
     $hash;
@@ -55,7 +55,7 @@
     }
     if($hash == $arr2[0]){
         $sql = "SELECT * FROM dressing WHERE players_id = '" . $user_id ."'";
-        $result = $con->query($sql) or die("query fail");
+        $result = $con->query($sql) or die("2: query fail" . mysql_error($con));
         //echo $result;
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {

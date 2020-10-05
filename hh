@@ -8,19 +8,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema heroku_e2c4947f07c47f2
+-- Schema N2UXTZAF5N
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema heroku_e2c4947f07c47f2
+-- Schema N2UXTZAF5N
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `heroku_e2c4947f07c47f2` DEFAULT CHARACTER SET utf8 ;
-USE `heroku_e2c4947f07c47f2` ;
+CREATE SCHEMA IF NOT EXISTS `N2UXTZAF5N` DEFAULT CHARACTER SET utf8 ;
+USE `N2UXTZAF5N` ;
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`players`
+-- Table `N2UXTZAF5N`.`players`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`players` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`players` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `salt` VARCHAR(45) NOT NULL,
@@ -40,9 +40,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`friend`
+-- Table `N2UXTZAF5N`.`friend`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`friend` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`friend` (
   `fid` INT(11) NOT NULL AUTO_INCREMENT,
   `friend_id` INT NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`friend` (
   INDEX `fk_friend_players_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_friend_players`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -59,9 +59,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`Dressing`
+-- Table `N2UXTZAF5N`.`Dressing`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Dressing` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`Dressing` (
   `did` INT NOT NULL AUTO_INCREMENT,
   `shirtname` VARCHAR(45) NOT NULL DEFAULT '1',
   `shortname` VARCHAR(45) NULL DEFAULT '1',
@@ -73,16 +73,16 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Dressing` (
   INDEX `fk_Dressing_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_Dressing_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`shirt`
+-- Table `N2UXTZAF5N`.`shirt`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`shirt` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`shirt` (
   `shirt_id` INT NOT NULL AUTO_INCREMENT,
   `shirtname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -90,16 +90,16 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`shirt` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`short`
+-- Table `N2UXTZAF5N`.`short`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`short` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`short` (
   `short_id` INT NOT NULL AUTO_INCREMENT,
   `shortname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -107,16 +107,16 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`short` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players10`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`shoe`
+-- Table `N2UXTZAF5N`.`shoe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`shoe` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`shoe` (
   `shoe_id` INT NOT NULL AUTO_INCREMENT,
   `shoename` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -124,16 +124,16 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`shoe` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players11`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`hair`
+-- Table `N2UXTZAF5N`.`hair`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`hair` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`hair` (
   `hair_id` INT NOT NULL AUTO_INCREMENT,
   `hairname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -141,16 +141,16 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`hair` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players12`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`stock`
+-- Table `N2UXTZAF5N`.`stock`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`stock` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`stock` (
   `stock_id` INT NOT NULL AUTO_INCREMENT,
   `food` INT NOT NULL DEFAULT 0,
   `water` INT NOT NULL DEFAULT 0,
@@ -159,16 +159,16 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`stock` (
   INDEX `fk_stock_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_stock_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`players` (`id`)
+    REFERENCES `N2UXTZAF5N`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`currentgame`
+-- Table `N2UXTZAF5N`.`currentgame`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`currentgame` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`currentgame` (
   `idCG` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `TotalPlayer` INT NULL,
@@ -177,9 +177,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `heroku_e2c4947f07c47f2`.`Game`
+-- Table `N2UXTZAF5N`.`Game`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Game` (
+CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`Game` (
   `idGame` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `player` VARCHAR(45) NULL,
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `heroku_e2c4947f07c47f2`.`Game` (
   INDEX `fk_Game_Current-Game1_idx` (`CG_id` ASC) ,
   CONSTRAINT `fk_Game_Current-Game1`
     FOREIGN KEY (`CG_id`)
-    REFERENCES `heroku_e2c4947f07c47f2`.`currentgame` (`idCG`)
+    REFERENCES `N2UXTZAF5N`.`currentgame` (`idCG`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

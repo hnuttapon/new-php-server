@@ -39,8 +39,6 @@
           $current_task = $row["current_task"];
         //   strval($current_level);
         //   strval($current_task);
-
-          $arr2 = str_split($loginhash, 45);
         }
     };
 

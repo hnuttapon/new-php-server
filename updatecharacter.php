@@ -13,15 +13,15 @@
     $shoe = $_POST["shoe"];
 
     $sql = "SELECT id FROM players WHERE username = '" . $username . "';";
-    $result = $con->query($sql) or die("query failed");
+    $result = $con->query($sql) or die("1: query failed" . mysqli_error($con));
     $user_id;
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           $user_id = $row["id"];
         }
-        $sql = "INSERT INTO dressing (shirtname,shortname,shoename,hairname,gender,players_id) VALUES ('". $shirt . "','". $short . "','". $shoe . "','". $hair . "','". $gender . "','".  $user_id . "');";
-        $result = $con->query($sql) or die("query failed");
+        $sql = "INSERT INTO Dressing (shirtname,shortname,shoename,hairname,gender,players_id) VALUES ('". $shirt . "','". $short . "','". $shoe . "','". $hair . "','". $gender . "','".  $user_id . "');";
+        $result = $con->query($sql) or die("2: query failed" . mysqli_error($con));
         echo "update";
     };
 

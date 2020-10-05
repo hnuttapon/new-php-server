@@ -20,7 +20,7 @@
         while($row = $result->fetch_assoc()) {
           $user_id = $row["id"];
         }
-        $sql = "INSERT INTO Dressing (shirtname,shortname,shoename,hairname,gender,players_id) VALUES ('". $shirt . "','". $short . "','". $shoe . "','". $hair . "','". $gender . "','".  $user_id . "');";
+        $sql = "INSERT INTO dressing (shirtname,shortname,shoename,hairname,gender,players_id) VALUES ('". $shirt . "','". $short . "','". $shoe . "','". $hair . "','". $gender . "','".  $user_id . "');";
         $result = $con->query($sql) or die("2: query failed" . mysqli_error($con));
         echo "update";
     };

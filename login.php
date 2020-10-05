@@ -54,7 +54,7 @@
         exit();
     }
     if($hash == $arr2[0]){
-        $sql = "SELECT * FROM Dressing WHERE players_id =  $user_id ;";
+        $sql = "SELECT * FROM dressing WHERE players_id =  $user_id ;";
         $result = $con->query($sql) or die("2: query fail" . mysqli_error($con));
         //echo $result;
         if ($result->num_rows > 0) {

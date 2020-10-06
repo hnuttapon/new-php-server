@@ -8,19 +8,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema unityaccess
+-- Schema mysqlcluster
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema unityaccess
+-- Schema mysqlcluster
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `unityaccess` DEFAULT CHARACTER SET utf8 ;
-USE `unityaccess` ;
+CREATE SCHEMA IF NOT EXISTS `mysqlcluster` DEFAULT CHARACTER SET utf8 ;
+USE `mysqlcluster` ;
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`players`
+-- Table `mysqlcluster`.`players`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`players` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`players` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `salt` VARCHAR(45) NOT NULL,
@@ -40,9 +40,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`friend`
+-- Table `mysqlcluster`.`friend`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`friend` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`friend` (
   `fid` INT(11) NOT NULL AUTO_INCREMENT,
   `friend_id` INT NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`friend` (
   INDEX `fk_friend_players_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_friend_players`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -59,9 +59,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`Dressing`
+-- Table `mysqlcluster`.`Dressing`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`dressing` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`dressing` (
   `did` INT NOT NULL AUTO_INCREMENT,
   `shirtname` VARCHAR(45) NOT NULL DEFAULT '1',
   `shortname` VARCHAR(45) NULL DEFAULT '1',
@@ -73,16 +73,16 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`dressing` (
   INDEX `fk_Dressing_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_Dressing_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`shirt`
+-- Table `mysqlcluster`.`shirt`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`shirt` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`shirt` (
   `shirt_id` INT NOT NULL AUTO_INCREMENT,
   `shirtname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -90,16 +90,16 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`shirt` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`short`
+-- Table `mysqlcluster`.`short`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`short` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`short` (
   `short_id` INT NOT NULL AUTO_INCREMENT,
   `shortname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -107,16 +107,16 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`short` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players10`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`shoe`
+-- Table `mysqlcluster`.`shoe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`shoe` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`shoe` (
   `shoe_id` INT NOT NULL AUTO_INCREMENT,
   `shoename` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -124,16 +124,16 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`shoe` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players11`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`hair`
+-- Table `mysqlcluster`.`hair`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`hair` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`hair` (
   `hair_id` INT NOT NULL AUTO_INCREMENT,
   `hairname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -141,16 +141,16 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`hair` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players12`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`stock`
+-- Table `mysqlcluster`.`stock`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`stock` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`stock` (
   `stock_id` INT NOT NULL AUTO_INCREMENT,
   `food` INT NOT NULL DEFAULT 0,
   `water` INT NOT NULL DEFAULT 0,
@@ -159,16 +159,16 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`stock` (
   INDEX `fk_stock_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_stock_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `unityaccess`.`players` (`id`)
+    REFERENCES `mysqlcluster`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`currentgame`
+-- Table `mysqlcluster`.`currentgame`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`currentgame` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`currentgame` (
   `idCG` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `TotalPlayer` INT NULL,
@@ -177,9 +177,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `unityaccess`.`Game`
+-- Table `mysqlcluster`.`Game`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `unityaccess`.`game` (
+CREATE TABLE IF NOT EXISTS `mysqlcluster`.`game` (
   `idGame` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `player` VARCHAR(45) NULL,
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `unityaccess`.`game` (
   INDEX `fk_Game_Current-Game1_idx` (`CG_id` ASC) ,
   CONSTRAINT `fk_Game_Current-Game1`
     FOREIGN KEY (`CG_id`)
-    REFERENCES `unityaccess`.`currentgame` (`idCG`)
+    REFERENCES `mysqlcluster`.`currentgame` (`idCG`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

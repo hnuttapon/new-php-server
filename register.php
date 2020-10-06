@@ -3,7 +3,7 @@
  //  $con = mysqli_connect($config['host'], $config['username'], $config['password'], $config['databasename']);
  $con = mysqli_connect('mysql-13571-0.cloudclusters.net', 'pon', '1234', 'mysqlcluster');
  if(mysqli_connect_errno()){
-     echo "1: Connection failed"; //error code #1 = connection failed
+     echo "1: Connection failed" . mysqli($con); //error code #1 = connection failed
      exit();
  }
 

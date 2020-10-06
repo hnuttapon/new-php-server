@@ -2,7 +2,7 @@
   //  $config = include('config.php');
   //  $con = mysqli_connect($config['host'], $config['username'], $config['password'], $config['databasename']);
     // $config = include('config.php');
-    $con = mysqli_connect('remotemysql.com', 'N2UXTZAF5N', 'QHzkYyyhkV', 'N2UXTZAF5N');
+   $con = mysqli_connect('mysql-13571-0.cloudclusters.net', 'pon', '1234', 'mysqlcluster');
     if(mysqli_connect_errno()){
         echo "1: Connection failed"; //error code #1 = connection failed
         exit();

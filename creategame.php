@@ -1,5 +1,5 @@
 <?php
-  $con = mysqli_connect('remotemysql.com', 'N2UXTZAF5N', 'QHzkYyyhkV', 'N2UXTZAF5N');
+  $con = mysqli_connect('localhost', 'root', 'root', 'unityaccess');
  if(mysqli_connect_errno()){
      echo "1: Connection failed"; 
      exit();

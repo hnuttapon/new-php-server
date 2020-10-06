@@ -8,19 +8,19 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema N2UXTZAF5N
+-- Schema unityaccess
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema N2UXTZAF5N
+-- Schema unityaccess
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `N2UXTZAF5N` DEFAULT CHARACTER SET utf8 ;
-USE `N2UXTZAF5N` ;
+CREATE SCHEMA IF NOT EXISTS `unityaccess` DEFAULT CHARACTER SET utf8 ;
+USE `unityaccess` ;
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`players`
+-- Table `unityaccess`.`players`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`players` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`players` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `salt` VARCHAR(45) NOT NULL,
@@ -40,9 +40,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`friend`
+-- Table `unityaccess`.`friend`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`friend` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`friend` (
   `fid` INT(11) NOT NULL AUTO_INCREMENT,
   `friend_id` INT NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`friend` (
   INDEX `fk_friend_players_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_friend_players`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
@@ -59,9 +59,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`Dressing`
+-- Table `unityaccess`.`Dressing`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`Dressing` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`dressing` (
   `did` INT NOT NULL AUTO_INCREMENT,
   `shirtname` VARCHAR(45) NOT NULL DEFAULT '1',
   `shortname` VARCHAR(45) NULL DEFAULT '1',
@@ -73,16 +73,16 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`Dressing` (
   INDEX `fk_Dressing_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_Dressing_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`shirt`
+-- Table `unityaccess`.`shirt`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`shirt` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`shirt` (
   `shirt_id` INT NOT NULL AUTO_INCREMENT,
   `shirtname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -90,16 +90,16 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`shirt` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`short`
+-- Table `unityaccess`.`short`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`short` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`short` (
   `short_id` INT NOT NULL AUTO_INCREMENT,
   `shortname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -107,16 +107,16 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`short` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players10`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`shoe`
+-- Table `unityaccess`.`shoe`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`shoe` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`shoe` (
   `shoe_id` INT NOT NULL AUTO_INCREMENT,
   `shoename` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -124,16 +124,16 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`shoe` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players11`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`hair`
+-- Table `unityaccess`.`hair`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`hair` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`hair` (
   `hair_id` INT NOT NULL AUTO_INCREMENT,
   `hairname` VARCHAR(45) NOT NULL,
   `players_id` INT(11) NOT NULL,
@@ -141,16 +141,16 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`hair` (
   INDEX `fk_shirt_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_shirt_players12`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`stock`
+-- Table `unityaccess`.`stock`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`stock` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`stock` (
   `stock_id` INT NOT NULL AUTO_INCREMENT,
   `food` INT NOT NULL DEFAULT 0,
   `water` INT NOT NULL DEFAULT 0,
@@ -159,16 +159,16 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`stock` (
   INDEX `fk_stock_players1_idx` (`players_id` ASC) ,
   CONSTRAINT `fk_stock_players1`
     FOREIGN KEY (`players_id`)
-    REFERENCES `N2UXTZAF5N`.`players` (`id`)
+    REFERENCES `unityaccess`.`players` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`currentgame`
+-- Table `unityaccess`.`currentgame`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`currentgame` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`currentgame` (
   `idCG` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `TotalPlayer` INT NULL,
@@ -177,9 +177,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `N2UXTZAF5N`.`Game`
+-- Table `unityaccess`.`Game`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`Game` (
+CREATE TABLE IF NOT EXISTS `unityaccess`.`game` (
   `idGame` INT NOT NULL AUTO_INCREMENT,
   `GameName` VARCHAR(45) NULL,
   `player` VARCHAR(45) NULL,
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `N2UXTZAF5N`.`Game` (
   INDEX `fk_Game_Current-Game1_idx` (`CG_id` ASC) ,
   CONSTRAINT `fk_Game_Current-Game1`
     FOREIGN KEY (`CG_id`)
-    REFERENCES `N2UXTZAF5N`.`currentgame` (`idCG`)
+    REFERENCES `unityaccess`.`currentgame` (`idCG`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;

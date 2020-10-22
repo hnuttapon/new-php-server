@@ -23,7 +23,7 @@
     $hash = crypt($password, $salt);
     $arr2 = str_split($hash, 45);
     $hash_input = $arr2[0]; 
-    $insertuserquery = "INSERT INTO players (username,salt,hash,money_km,latitude,longitude,total_km,current_level,current_task) VALUES ('" . $username . "' , '" . $salt . "', '" . $hash_input . "','1000','0','0','0','1','1');";
+    $insertuserquery = "INSERT INTO players (username,salt,hash,money_km,total_km,current_level,current_task) VALUES ('" . $username . "' , '" . $salt . "', '" . $hash_input . "','0','0','1','1');";
     mysqli_query($con, $insertuserquery) or die(mysqli_error($con)); //error code #4 - Insert query failed
 
     echo("0");

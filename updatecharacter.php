@@ -13,8 +13,25 @@
     $hair = $_POST["hair"];
     $shoe = $_POST["shoe"];
 
+    // $sql = "SELECT id FROM players WHERE username = '" . $username . "';";
+    // $result = $con->query($sql) or die("1: query failed" . mysqli_error($con));
+    // $user_id;
+
+    // if ($result->num_rows > 0) {
+    //     while($row = $result->fetch_assoc()) {
+    //       $user_id = $row["id"];
+    //     }
+    //     $sql = "INSERT INTO human (char,players_id) VALUES ('". $player ."','". $user_id ."');";
+    //     $result = $con->query($sql) or die("3: query failed");
+    //     echo "0";
+    // }
+    // else{
+    //     echo "fail";
+    //     exit();
+    // }
+
     $sql = "SELECT id FROM players WHERE username = '" . $username . "';";
-    $result = $con->query($sql) or die("1: query failed" . mysqli_error($con));
+    $result = $con->query($sql) or die("2: query failed");
     $user_id;
 
     if ($result->num_rows > 0) {
@@ -23,6 +40,9 @@
         }
         $sql = "INSERT INTO dressing (shirtname,shortname,shoename,hairname,gender,players_id) VALUES ('". $shirt . "','". $short . "','". $shoe . "','". $hair . "','". $gender . "','".  $user_id . "');";
         $result = $con->query($sql) or die("2: query failed" . mysqli_error($con));
+
+        $sql = "INSERT INTO human (human_character,players_id) VALUES ('". $gender ."','". $user_id ."');";
+        $result = $con->query($sql) or die("3: query failed" . mysqli_error($con));
         echo "update";
     };
 

@@ -35,12 +35,15 @@
           $hash = $row["hash"];
           $user_id = $row["id"];
           $money_km = $row["money_km"];
+          $total_km = strval($row["total_km"]);
           $current_level = $row["current_level"];
           $current_task = $row["current_task"];
+          $pet_character = $row["pet_character"];
+          $current_value = strval($row["currenthealth"]);
         //   strval($current_level);
         //   strval($current_task);
 
-          $arr2 = str_split($loginhash, 45);
+        
         }
     };
 
@@ -54,6 +57,7 @@
         exit();
     }
     if($hash == $arr2[0]){
+
         $sql = "SELECT * FROM dressing WHERE players_id =  $user_id ;";
         $result = $con->query($sql) or die("2: query fail" . mysqli_error($con));
         //echo $result;
@@ -64,10 +68,12 @@
             $shortname = $row["shortname"];
             $shoename = $row["shoename"];
             $hairname = $row["hairname"];
-            echo "dress" . ":" . $gender . ":" . $shirtname . ":" . $shortname . ":" . $shoename . ":" . $hairname . ":" . $money_km . ":" . $current_level .":" . $current_task;  
+            echo "dress" . ":" . $gender . ":" . $shirtname . ":" . $shortname . ":" . $shoename . ":" . $hairname . ":" . $money_km . ":" . $current_level .":" . $current_task . ":" . $pet_character . ":" . $total_km . ":" . $current_value;  
             }
         }
         else if ($result->num_rows == 0){
+            // $sql = "INSERT INTO pet (players_id) VALUES ($user_id);";
+            // $result = $con->query($sql) or die("3: query failed" . mysqli_error($con));
             echo "gender_not_exist";
         }
         else{

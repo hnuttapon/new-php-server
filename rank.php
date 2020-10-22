@@ -5,12 +5,13 @@
         exit();
     }
 
-
-    $username = $_POST["username"];
-    $sql = "SELECT role FROM game WHERE player = '" . $username . "'";
-    $result = $con->query($sql) or die("query failed" . mysql_error($con));
+    $sql = "SELECT * FROM players ORDER BY total_km DESC";
+    $result = $con->query($sql) or die("query failed");
+    echo "rank:";
     while($row = $result->fetch_assoc()) {
-        echo $row["role"];
+        echo $row["username"];
+        echo ":";
     }
+
 ?>
 

@@ -5,14 +5,17 @@
         exit();
     }
 
-
     $gamename = $_POST["gamename"];
-    $sql = "SELECT player FROM game WHERE GameName = '" . $gamename . "'";
-    $result = $con->query($sql) or die("query failed");
-    echo "player:";
-    echo $result->num_rows . ":";
+
+    $sql = "SELECT * FROM game WHERE GameName = '" . $gamename ."' AND role = 1";
+    $result = $con->query($sql) or die("1: query failed" .mysqli_connect($con));
+    echo "location:";
     while($row = $result->fetch_assoc()) {
         echo $row["player"];
+        echo ":";
+        echo $row["latitude"];
+        echo ":";
+        echo $row["longitude"];
         echo ":";
     }
 

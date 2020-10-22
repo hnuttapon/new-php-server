@@ -7,8 +7,14 @@
      
         $username = $_POST["username"];
         $money_km = $_POST["money_km"];
+        $pet = $_POST["char"];
 
-        $sql = "UPDATE players SET money_km = '" . $money_km ."' WHERE username = '" . $username ."'";
-        $result = $con->query($sql) or die("query failed");
-        echo "update";
+   
+
+        $sql = "UPDATE players SET money_km = '" . $money_km ."' , pet_character = '" . $pet . "' WHERE username = '" . $username ."'";
+        $result = $con->query($sql) or die("1: query failed" . mysqli_error($con));
+
+
+        echo "0";
+        
 ?>

@@ -7,10 +7,10 @@
 
 
     $username = $_POST["username"];
-    $sql = "SELECT role FROM game WHERE player = '" . $username . "'";
+    $sql = "SELECT pet_character FROM players WHERE username = '" . $username . "'";
     $result = $con->query($sql) or die("query failed" . mysql_error($con));
     while($row = $result->fetch_assoc()) {
-        echo $row["role"];
+        echo $row["pet_character"];
     }
 ?>
 

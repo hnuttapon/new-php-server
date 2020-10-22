@@ -6,9 +6,9 @@
         }
      
         $username = $_POST["username"];
-        $money_km = $_POST["money_km"];
+        $total_km = (int)$_POST["total_km"];
 
-        $sql = "UPDATE players SET money_km = '" . $money_km ."' WHERE username = '" . $username ."'";
-        $result = $con->query($sql) or die("query failed");
+        $sql = "UPDATE players SET total_km =  $total_km WHERE username = '" . $username ."'";
+        $result = $con->query($sql) or die("query failed" );
         echo "update";
 ?>

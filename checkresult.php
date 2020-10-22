@@ -5,12 +5,13 @@
         exit();
     }
 
-
-    $username = $_POST["username"];
-    $sql = "SELECT role FROM game WHERE player = '" . $username . "'";
-    $result = $con->query($sql) or die("query failed" . mysql_error($con));
+    $survivor = $_POST["survivor"];
+    $sql = "SELECT * FROM game WHERE player = '" . $survivor ."' ";
+    $result = $con->query($sql) or die("1: query failed" .mysqli_connect($con));
     while($row = $result->fetch_assoc()) {
-        echo $row["role"];
+        echo strval($row["role"]);
     }
-?>
 
+ 
+
+?>

@@ -6,19 +6,24 @@
     }
 
     $username = $_POST["username"];
-    $hair_name = $_POST["hair_name"];
+    $money_km = $_POST["money_km"];
+    $player = $_POST["player"];
+
+    $sql = "UPDATE players SET money_km = '" . $money_km ."' WHERE username = '" . $username ."'";
+    $result = $con->query($sql) or die("1: query failed" . mysqli_error($con));
 
     $sql = "SELECT id FROM players WHERE username = '" . $username . "';";
-    $result = $con->query($sql) or die("query failed");
+    $result = $con->query($sql) or die("2: query failed");
     $user_id;
+
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
           $user_id = $row["id"];
         }
-        $sql = "INSERT INTO hair (hairname,players_id) VALUES ('". $hair_name ."','". $user_id ."');";
-        $result = $con->query($sql) or die("query failed");
-        echo "Complete";
+        $sql = "INSERT INTO human (human_character,players_id) VALUES ('". $player ."','". $user_id ."');";
+        $result = $con->query($sql) or die("3: query failed" . mysqli_error($con));
+        echo "0";
     }
     else{
         echo "fail";

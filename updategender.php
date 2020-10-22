@@ -6,7 +6,7 @@
     }
 
     $username = $_POST["username"];
-    $hair_name = $_POST["hair_name"];
+    $gender = $_POST["gender"];
 
     $sql = "SELECT id FROM players WHERE username = '" . $username . "';";
     $result = $con->query($sql) or die("query failed");
@@ -16,9 +16,9 @@
         while($row = $result->fetch_assoc()) {
           $user_id = $row["id"];
         }
-        $sql = "INSERT INTO hair (hairname,players_id) VALUES ('". $hair_name ."','". $user_id ."');";
+        $sql = "UPDATE dressing SET gender = '" . $gender ."'  WHERE players_id = '" . $user_id ."'";
         $result = $con->query($sql) or die("query failed");
-        echo "Complete";
+        echo "update";
     }
     else{
         echo "fail";
